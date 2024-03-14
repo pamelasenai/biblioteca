@@ -1,4 +1,4 @@
-![logo.png](logo.png)
+![logo](images/logo.png)
 
 # Projeto Biblioteca
 #### _Exercícios da Semana 9 - (11/03/2024 a 15/03/2024)_
@@ -31,8 +31,7 @@ realizados, os bibliotecários responsáveis e os visitantes eventuais. <br/>
 - Atributos: id, nome, telefone.
 
 ## 📈 Diagrama de Entidade-Relacionamento (MER)
-O diagrama de entidade-relacionamento pode ser encontrado na pasta images na raiz do projeto.
-<!-- TODO: adicionar link para o MER -->
+O [diagrama de entidade-relacionamento](images/diagrama-mer.png) pode ser encontrado na pasta images na raiz do projeto.
 
 --- 
 ## 🎯 Endpoints
@@ -103,7 +102,7 @@ Essas queries utilizam JPQL ou Native Queries. <br/>
 --- 
 ## 📋 Todo List
 - [ ] [Exercício 1 - Entidades do projeto](#-m1s09-ex-1---entidades-do-projeto)
-- [ ] [Exercício 2 - MER](#-m1s09-ex-2---mer)
+- [x] [Exercício 2 - MER](#-m1s09-ex-2---mer)
 - [ ] [Exercício 3 - Endpoints CREATE](#-m1s09-ex-3---endpoints-create)
 - [ ] [Exercício 4 - Endpoints READ](#-m1s09-ex-4---endpoints-read)
 - [ ] [Exercício 5 - Endpoints DELETE](#-m1s09-ex-5---endpoints-delete)
