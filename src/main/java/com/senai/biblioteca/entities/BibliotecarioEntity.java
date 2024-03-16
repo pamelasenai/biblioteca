@@ -1,8 +1,6 @@
 package com.senai.biblioteca.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -10,7 +8,8 @@ import lombok.Data;
 @Table(name = "bibliotecario")
 public class BibliotecarioEntity {
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String nome;
     private String email;

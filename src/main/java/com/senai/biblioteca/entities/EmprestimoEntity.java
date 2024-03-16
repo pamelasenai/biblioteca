@@ -10,7 +10,8 @@ import java.time.LocalDate;
 @Table(name = "emprestimos")
 public class EmprestimoEntity {
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "data_emprestimo")
     private LocalDate dataEmprestimo;
