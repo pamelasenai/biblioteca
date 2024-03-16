@@ -1,7 +1,8 @@
 package com.senai.biblioteca.controller;
 
 import com.senai.biblioteca.entities.LivroEntity;
-import com.senai.biblioteca.repository.LivroRepository;
+import com.senai.biblioteca.service.LivroService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,15 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/livro")
+@RequiredArgsConstructor
 public class LivroController {
-    private final LivroRepository livroRepository;
-
-    public LivroController(LivroRepository livroRepository) {
-        this.livroRepository = livroRepository;
-    }
+    private final LivroService livroService;
 
     @PostMapping
     private LivroEntity criarLivro(@RequestBody LivroEntity livro){
-        return livroRepository.save(livro);
+        return livroService.salvarLivro(livro);
     }
 }
