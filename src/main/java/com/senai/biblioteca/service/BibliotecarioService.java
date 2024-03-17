@@ -5,6 +5,9 @@ import com.senai.biblioteca.repository.BibliotecarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class BibliotecarioService {
@@ -15,6 +18,14 @@ public class BibliotecarioService {
             return bibliotecarioRepository.save(bibliotecario);
         }
         return null;
+    }
+
+    public List<BibliotecarioEntity> buscarTodosBibliotecarios() {
+        return bibliotecarioRepository.findAll();
+    }
+
+    public Optional<BibliotecarioEntity> buscarPorId(Long id) {
+        return bibliotecarioRepository.findById(id);
     }
 
     private boolean validar(BibliotecarioEntity bibliotecario) throws Exception {

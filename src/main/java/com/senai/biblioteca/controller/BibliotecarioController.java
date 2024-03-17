@@ -3,10 +3,10 @@ package com.senai.biblioteca.controller;
 import com.senai.biblioteca.entities.BibliotecarioEntity;
 import com.senai.biblioteca.service.BibliotecarioService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/bibliotecarios")
@@ -15,7 +15,17 @@ public class BibliotecarioController {
     private final BibliotecarioService bibliotecarioService;
 
     @PostMapping
-    private BibliotecarioEntity criarBibliotecario(@RequestBody BibliotecarioEntity bibliotecario) throws Exception {
+    public BibliotecarioEntity criarBibliotecario(@RequestBody BibliotecarioEntity bibliotecario) throws Exception {
         return bibliotecarioService.salvarBibliotecario(bibliotecario);
+    }
+
+    @GetMapping
+    public List<BibliotecarioEntity> buscarTodosBibliotecarios() {
+        return bibliotecarioService.buscarTodosBibliotecarios();
+    }
+
+    @GetMapping("{id}")
+    public Optional<BibliotecarioEntity> buscarPorId(@PathVariable Long id) {
+        return bibliotecarioService.buscarPorId(id);
     }
 }
