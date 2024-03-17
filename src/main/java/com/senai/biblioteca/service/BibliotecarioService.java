@@ -35,7 +35,8 @@ public class BibliotecarioService {
         if (
                 bibliotecario.getEmail() == null ||
                 bibliotecario.getEmail().isBlank() ||
-                !bibliotecario.getEmail().contains("@")
+                !bibliotecario.getEmail().contains("@") ||
+                !bibliotecario.getEmail().contains(".")
         ) {
             throw new Exception("Email não é valido.");
         }
