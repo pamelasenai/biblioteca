@@ -5,6 +5,9 @@ import com.senai.biblioteca.repository.MembroRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class MembroService {
@@ -15,6 +18,14 @@ public class MembroService {
             return membroRepository.save(membro);
         }
         return null;
+    }
+
+    public List<MembroEntity> buscarTodosMembros() {
+        return membroRepository.findAll();
+    }
+
+    public Optional<MembroEntity> buscarPorId(Long id) {
+        return membroRepository.findById(id);
     }
 
     private boolean validar(MembroEntity membro) throws Exception {
