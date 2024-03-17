@@ -20,13 +20,13 @@ public class EmprestimoEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_livro", referencedColumnName = "id")
-    private LivroEntity idLivro;
+    private LivroEntity livro;
 
     @ManyToOne
     @JoinColumn(name = "id_membro", referencedColumnName = "id")
-    private MembroEntity idMembro;
+    private MembroEntity membro;
 
     @ManyToOne
     @JoinColumn(name = "id_bibliotecario", referencedColumnName = "id")
-    private BibliotecarioEntity idBibliotecario;
+    private BibliotecarioEntity bibliotecario;
 }

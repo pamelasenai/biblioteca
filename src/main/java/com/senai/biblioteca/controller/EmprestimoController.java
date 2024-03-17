@@ -3,10 +3,10 @@ package com.senai.biblioteca.controller;
 import com.senai.biblioteca.entities.EmprestimoEntity;
 import com.senai.biblioteca.service.EmprestimoService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/emprestimos")
@@ -15,7 +15,17 @@ public class EmprestimoController {
     private final EmprestimoService emprestimoService;
 
     @PostMapping
-    private EmprestimoEntity criarEmprestimo(@RequestBody EmprestimoEntity emprestimo) throws Exception {
+    public EmprestimoEntity criarEmprestimo(@RequestBody EmprestimoEntity emprestimo) throws Exception {
         return emprestimoService.salvarEmprestimo(emprestimo);
+    }
+
+    @GetMapping
+    public List<EmprestimoEntity> buscarTodosEmprestimos() {
+        return emprestimoService.buscarTodosEmprestimos();
+    }
+
+    @GetMapping("{id}")
+    public Optional<EmprestimoEntity> buscarPorId(@PathVariable Long id) {
+        return emprestimoService.buscarPorId(id);
     }
 }

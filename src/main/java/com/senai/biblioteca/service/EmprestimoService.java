@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +20,14 @@ public class EmprestimoService {
             return emprestimoRepository.save(emprestimo);
         }
         return null;
+    }
+
+    public List<EmprestimoEntity> buscarTodosEmprestimos() {
+        return emprestimoRepository.findAll();
+    }
+
+    public Optional<EmprestimoEntity> buscarPorId(Long id) {
+        return emprestimoRepository.findById(id);
     }
 
     private boolean validar(EmprestimoEntity emprestimo) throws Exception {
