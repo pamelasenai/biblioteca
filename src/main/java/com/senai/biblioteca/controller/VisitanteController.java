@@ -28,4 +28,9 @@ public class VisitanteController {
     public Optional<VisitanteEntity> buscarPorId(@PathVariable Long id) {
         return visitanteService.buscarPorId(id);
     }
+
+    @DeleteMapping("{id}")
+    public boolean deletarVisitante(@PathVariable Long id) {
+        return visitanteService.deletarVisitante(id);
+    }
 }
