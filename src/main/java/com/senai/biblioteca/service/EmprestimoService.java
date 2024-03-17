@@ -30,6 +30,14 @@ public class EmprestimoService {
         return emprestimoRepository.findById(id);
     }
 
+    public boolean deletarEmprestimo(Long id) {
+        if (buscarPorId(id).isEmpty()) {
+            throw new IllegalArgumentException("Empréstimo com o ID " + id + " não encontrado.");
+        }
+        emprestimoRepository.deleteById(id);
+        return true;
+    }
+
     private boolean validar(EmprestimoEntity emprestimo) throws Exception {
         if(emprestimo.getDataEmprestimo() == null || ehDataInvalida(emprestimo.getDataEmprestimo())){
             throw new Exception("Data deve estar no formato: DD/MM/AAAA.");
