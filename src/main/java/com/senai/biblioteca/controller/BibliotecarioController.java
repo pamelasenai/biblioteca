@@ -19,17 +19,17 @@ public class BibliotecarioController {
         return bibliotecarioService.salvarBibliotecario(bibliotecario);
     }
 
-    @GetMapping
+    @GetMapping("/buscar-todos")
     public List<BibliotecarioEntity> buscarTodosBibliotecarios() {
         return bibliotecarioService.buscarTodosBibliotecarios();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/id/{id}")
     public Optional<BibliotecarioEntity> buscarPorId(@PathVariable Long id) {
         return bibliotecarioService.buscarPorId(id);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/deletar/{id}")
     public boolean deletarBibliotecario(@PathVariable Long id) {
         return bibliotecarioService.deletarBibliotecario(id);
     }

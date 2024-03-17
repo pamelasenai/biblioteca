@@ -19,17 +19,17 @@ public class LivroController {
         return livroService.salvarLivro(livro);
     }
 
-    @GetMapping
+    @GetMapping("/buscar-todos")
     public List<LivroEntity> buscarTodosLivros() {
         return livroService.buscarTodosLivros();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/id/{id}")
     public Optional<LivroEntity> buscarPorId(@PathVariable Long id) {
         return livroService.buscarPorId(id);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/deletar/{id}")
     public boolean deletarLivro(@PathVariable Long id) {
         return livroService.deletarLivro(id);
     }

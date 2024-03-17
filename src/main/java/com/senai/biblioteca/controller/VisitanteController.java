@@ -19,17 +19,17 @@ public class VisitanteController {
         return visitanteService.salvarVisitante((visitante));
     }
 
-    @GetMapping
+    @GetMapping("/buscar-todos")
     public List<VisitanteEntity> buscarTodosVisitantes() {
         return visitanteService.buscarTodosVisitantes();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/id/{id}")
     public Optional<VisitanteEntity> buscarPorId(@PathVariable Long id) {
         return visitanteService.buscarPorId(id);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/deletar/{id}")
     public boolean deletarVisitante(@PathVariable Long id) {
         return visitanteService.deletarVisitante(id);
     }
