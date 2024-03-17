@@ -142,7 +142,7 @@ Essas queries utilizam JPQL ou Native Queries. <br/>
 - [ ] [Exercício 1 - Entidades do projeto](#-m1s09-ex-1---entidades-do-projeto)
 - [x] [Exercício 2 - MER](#-m1s09-ex-2---mer)
 - [x] [Exercício 3 - Endpoints CREATE](#-m1s09-ex-3---endpoints-create)
-- [ ] [Exercício 4 - Endpoints READ](#-m1s09-ex-4---endpoints-read)
+- [X] [Exercício 4 - Endpoints READ](#-m1s09-ex-4---endpoints-read)
 - [ ] [Exercício 5 - Endpoints DELETE](#-m1s09-ex-5---endpoints-delete)
 - [ ] [Exercício 6 - Queries UPDATE](#-m1s09-ex-6---queries-update)
 - [ ] [Exercício 7 - Endpoints UPDATE](#-m1s09-ex-7---endpoints-update)
