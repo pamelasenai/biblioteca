@@ -6,6 +6,9 @@ import com.senai.biblioteca.utils.Datas;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class LivroService {
@@ -16,6 +19,14 @@ public class LivroService {
             return livroRepository.save(livro);
         }
         return null;
+    }
+
+    public List<LivroEntity> buscarTodosLivros() {
+        return livroRepository.findAll();
+    }
+
+    public Optional<LivroEntity> buscarPorId(Long id) {
+        return livroRepository.findById(id);
     }
 
     private boolean validar(LivroEntity livro) throws Exception {

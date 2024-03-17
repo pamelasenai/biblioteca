@@ -5,6 +5,9 @@ import com.senai.biblioteca.repository.VisitanteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class VisitanteService {
@@ -15,6 +18,14 @@ public class VisitanteService {
             return visitanteRepository.save(visitante);
         }
         return null;
+    }
+
+    public List<VisitanteEntity> buscarTodosVisitantes() {
+        return visitanteRepository.findAll();
+    }
+
+    public Optional<VisitanteEntity> buscarPorId(Long id) {
+        return visitanteRepository.findById(id);
     }
 
     private boolean validar(VisitanteEntity visitante) throws Exception {

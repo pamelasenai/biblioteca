@@ -3,10 +3,10 @@ package com.senai.biblioteca.controller;
 import com.senai.biblioteca.entities.VisitanteEntity;
 import com.senai.biblioteca.service.VisitanteService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/vistantes")
@@ -15,7 +15,17 @@ public class VisitanteController {
     private final VisitanteService visitanteService;
 
     @PostMapping
-    private VisitanteEntity criarVisitante(@RequestBody VisitanteEntity visitante) throws Exception {
+    public VisitanteEntity criarVisitante(@RequestBody VisitanteEntity visitante) throws Exception {
         return visitanteService.salvarVisitante((visitante));
+    }
+
+    @GetMapping
+    public List<VisitanteEntity> buscarTodosVisitantes() {
+        return visitanteService.buscarTodosVisitantes();
+    }
+
+    @GetMapping("{id}")
+    public Optional<VisitanteEntity> buscarPorId(@PathVariable Long id) {
+        return visitanteService.buscarPorId(id);
     }
 }
