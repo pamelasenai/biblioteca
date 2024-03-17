@@ -28,4 +28,9 @@ public class LivroController {
     public Optional<LivroEntity> buscarPorId(@PathVariable Long id) {
         return livroService.buscarPorId(id);
     }
+
+    @DeleteMapping("{id}")
+    public boolean deletarLivro(@PathVariable Long id) {
+        return livroService.deletarLivro(id);
+    }
 }
