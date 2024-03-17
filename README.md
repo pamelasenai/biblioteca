@@ -60,13 +60,13 @@ O [diagrama de entidade-relacionamento](images/diagrama-mer.png) pode ser encont
        {
            "dataEmprestimo": "17/03/2024",
            "dataDevolucao": "17/03/2024",
-           "idLivro": {
+           "livro": {
                "id": 1
            },
-           "idMembro": {
+           "membro": {
               "id": 1
            },
-           "idBibliotecario": {
+           "bibliotecario": {
               "id": 1
            }
        }
@@ -91,29 +91,29 @@ O [diagrama de entidade-relacionamento](images/diagrama-mer.png) pode ser encont
 
 ### READ
 As rotas abaixo retornam um array vazio caso não haja cadastrados.
-- GET ```/livro```: Obtém a lista completa de livros.
-- GET ```/membros```: Obtém a lista completa de membros.
-- GET ```/empréstimos```: Obtém a lista completa de empréstimos.
-- GET ```/bibliotecarios```: Obtém a lista completa de bibliotecários.
-- GET ```/visitantes```: Obtém a lista completa de visitantes.
+- GET ```/livro/buscar-todos```: Obtém a lista completa de livros.
+- GET ```/membros/buscar-todos```: Obtém a lista completa de membros.
+- GET ```/empréstimos/buscar-todos```: Obtém a lista completa de empréstimos.
+- GET ```/bibliotecarios/buscar-todos```: Obtém a lista completa de bibliotecários.
+- GET ```/visitantes/buscar-todos```: Obtém a lista completa de visitantes.
 
 As rotas abaixo retornam null caso não haja cadastro com id solicitado.
-- GET ```/livro/:id```: Obtém a lista completa de livros.
-- GET ```/membros/:id```: Obtém a lista completa de membros.
-- GET ```/empréstimos/:id```: Obtém a lista completa de empréstimos.
-- GET ```/bibliotecarios/:id```: Obtém a lista completa de bibliotecários.
-- GET ```/visitantes/:id```: Obtém a lista completa de visitantes.
+- GET ```/livro/id/:id```: Obtém a lista completa de livros.
+- GET ```/membros/id/:id```: Obtém a lista completa de membros.
+- GET ```/empréstimos/id/:id```: Obtém a lista completa de empréstimos.
+- GET ```/bibliotecarios/id/:id```: Obtém a lista completa de bibliotecários.
+- GET ```/visitantes/id/:id```: Obtém a lista completa de visitantes.
 
 ### DELETE
 Todas as rotas retornam true quando a deleção é concluída com sucesso, 
 caso não exista o registro com o id informado retornará um erro.
-- DELETE ```/empréstimos/:id```: Deleta um empréstimo.
-- DELETE ```/visitantes/:id```: Deleta um visitante.
+- DELETE ```/empréstimos/deletar/:id```: Deleta um empréstimo.
+- DELETE ```/visitantes/deletar/:id```: Deleta um visitante.
 
 As rotas abaixo só permitem a deleção caso não haja vinculo com a tabela empréstimo
-- DELETE ```/livro/:id```: Deleta um livro.
-- DELETE ```/membros/:id```: Deleta um membro.
-- DELETE ```/bibliotecarios/:id```: Deleta um bibliotecário.
+- DELETE ```/livro/deletar/:id```: Deleta um livro.
+- DELETE ```/membros/deletar/:id```: Deleta um membro.
+- DELETE ```/bibliotecarios/deletar/:id```: Deleta um bibliotecário.
 
 ### UPDATE
 - PUT ```/livro/{id}```: Atualiza as informações de um livro.
