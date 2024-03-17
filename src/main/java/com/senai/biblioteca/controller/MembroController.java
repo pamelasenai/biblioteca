@@ -28,4 +28,9 @@ public class MembroController {
     public Optional<MembroEntity> buscarPorId(@PathVariable Long id) {
         return membroService.buscarPorId(id);
     }
+
+    @DeleteMapping("{id}")
+    public boolean deletarMembro(@PathVariable Long id) {
+        return membroService.deletarMembro(id);
+    }
 }

@@ -105,11 +105,15 @@ As rotas abaixo retornam null caso não haja cadastro com id solicitado.
 - GET ```/visitantes/:id```: Obtém a lista completa de visitantes.
 
 ### DELETE
-- DELETE ```/livro/{id}```: Deleta um livro.
-- DELETE ```/membros/{id}```: Deleta um membro.
-- DELETE ```/empréstimos/{id}```: Deleta um empréstimo.
-- DELETE ```/bibliotecarios/{id}```: Deleta um bibliotecário.
-- DELETE ```/visitantes/{id}```: Deleta um visitante.
+Todas as rotas retornam true quando a deleção é concluída com sucesso, 
+caso não exista o registro com o id informado retornará um erro.
+- DELETE ```/empréstimos/:id```: Deleta um empréstimo.
+- DELETE ```/visitantes/:id```: Deleta um visitante.
+
+As rotas abaixo só permitem a deleção caso não haja vinculo com a tabela empréstimo
+- DELETE ```/livro/:id```: Deleta um livro.
+- DELETE ```/membros/:id```: Deleta um membro.
+- DELETE ```/bibliotecarios/:id```: Deleta um bibliotecário.
 
 ### UPDATE
 - PUT ```/livro/{id}```: Atualiza as informações de um livro.
@@ -142,8 +146,8 @@ Essas queries utilizam JPQL ou Native Queries. <br/>
 - [ ] [Exercício 1 - Entidades do projeto](#-m1s09-ex-1---entidades-do-projeto)
 - [x] [Exercício 2 - MER](#-m1s09-ex-2---mer)
 - [x] [Exercício 3 - Endpoints CREATE](#-m1s09-ex-3---endpoints-create)
-- [X] [Exercício 4 - Endpoints READ](#-m1s09-ex-4---endpoints-read)
-- [ ] [Exercício 5 - Endpoints DELETE](#-m1s09-ex-5---endpoints-delete)
+- [x] [Exercício 4 - Endpoints READ](#-m1s09-ex-4---endpoints-read)
+- [x] [Exercício 5 - Endpoints DELETE](#-m1s09-ex-5---endpoints-delete)
 - [ ] [Exercício 6 - Queries UPDATE](#-m1s09-ex-6---queries-update)
 - [ ] [Exercício 7 - Endpoints UPDATE](#-m1s09-ex-7---endpoints-update)
 - [ ] [Exercício 8 - Scripts de criação de tabelas](#-m1s09-ex-8---scripts-de-criação-de-tabelas)

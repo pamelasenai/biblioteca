@@ -29,6 +29,21 @@ public class LivroService {
         return livroRepository.findById(id);
     }
 
+    public boolean deletarLivro(Long id) {
+        boolean ahVinculos = livroRepository.countVinculos(id) > 0;
+        if (buscarPorId(id).isEmpty()) {
+            throw new IllegalArgumentException("Livro com o ID " + id + " não encontrado.");
+        }
+        if (ahVinculos){
+            throw new IllegalStateException(
+                    "O Livro está vinculado a um empréstimo e não pode ser excluído." +
+                    "Delete todos os empréstimos deste livro antes de deleta-lo."
+            );
+        }
+        livroRepository.deleteById(id);
+        return true;
+    }
+
     private boolean validar(LivroEntity livro) throws Exception {
         if(
                 livro.getTitulo() == null ||

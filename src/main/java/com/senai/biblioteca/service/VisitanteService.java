@@ -28,6 +28,14 @@ public class VisitanteService {
         return visitanteRepository.findById(id);
     }
 
+    public boolean deletarVisitante(Long id) {
+        if (buscarPorId(id).isEmpty()) {
+            throw new IllegalArgumentException("Visitante com o ID " + id + " não encontrado.");
+        }
+        visitanteRepository.deleteById(id);
+        return true;
+    }
+
     private boolean validar(VisitanteEntity visitante) throws Exception {
         if(
                 visitante.getNome() == null ||

@@ -28,4 +28,9 @@ public class EmprestimoController {
     public Optional<EmprestimoEntity> buscarPorId(@PathVariable Long id) {
         return emprestimoService.buscarPorId(id);
     }
+
+    @DeleteMapping("{id}")
+    public boolean deletarEmprestimo(@PathVariable Long id) {
+        return emprestimoService.deletarEmprestimo(id);
+    }
 }

@@ -28,6 +28,21 @@ public class MembroService {
         return membroRepository.findById(id);
     }
 
+    public boolean deletarMembro(Long id) {
+        boolean ahVinculos = membroRepository.countVinculos(id) > 0;
+        if (buscarPorId(id).isEmpty()) {
+            throw new IllegalArgumentException("Membro com o ID " + id + " não encontrado.");
+        }
+        if (ahVinculos){
+            throw new IllegalStateException(
+                    "O membro está vinculado a um empréstimo e não pode ser excluído." +
+                    "Delete todos os empréstimos deste membro antes de deleta-lo."
+            );
+        }
+        membroRepository.deleteById(id);
+        return true;
+    }
+
     private boolean validar(MembroEntity membro) throws Exception {
         if(
                 membro.getNome() == null ||
