@@ -39,24 +39,55 @@ O [diagrama de entidade-relacionamento](images/diagrama-mer.png) pode ser encont
 - POST ```/livro```: Cria um novo livro.
   * RequestBody: 
     ```json
-      {
-        "titulo" : "Harry Potter e a pedra filosofal",
-        "autor" : "J. K. Rowling",
-        "anoPublicacao": 2017
-      }
+        {
+        	"titulo": "titulo",
+        	"autor": "autor",
+        	"anoPublicacao": 2025
+        }
     ```
 - POST ```/membros```: Cria um novo membro.
-   * RequestBody:
-  <!-- TODO: Adicionar JSON -->
+  * RequestBody:
+     ```json
+        {
+            "nome": "nome",
+	        "endereco": "endereco, número - bairro, cidade / UF",
+	        "telefone": "(4) 99999-99999"
+        }
+     ```
 - POST ```/empréstimos```: Registra um novo empréstimo.
-    * RequestBody:
-  <!-- TODO: Adicionar JSON -->
+  * RequestBody:
+    ```json
+       {
+           "dataEmprestimo": "17/03/2024",
+           "dataDevolucao": "17/03/2024",
+           "idLivro": {
+               "id": 1
+           },
+           "idMembro": {
+              "id": 1
+           },
+           "idBibliotecario": {
+              "id": 1
+           }
+       }
+    ```
 - POST ```/bibliotecarios```: Cria um novo bibliotecário.
     * RequestBody:
-  <!-- TODO: Adicionar JSON -->
+      ```json
+         {
+           "nome": "nome",
+           "email": "email@email.com.br",
+           "senha": "senha123"
+         }
+      ```
 - POST ```/visitantes```: Cria um novo visitante.
-    * RequestBody:
-  <!-- TODO: Adicionar JSON -->
+  * RequestBody:
+    ```json
+       {
+         "nome": "nome",
+         "telefone": "(048) 99999-9999"
+       }
+    ```
 
 ### READ
 As rotas abaixo retornam um array vazio caso não haja cadastrados.
@@ -65,6 +96,13 @@ As rotas abaixo retornam um array vazio caso não haja cadastrados.
 - GET ```/empréstimos```: Obtém a lista completa de empréstimos.
 - GET ```/bibliotecarios```: Obtém a lista completa de bibliotecários.
 - GET ```/visitantes```: Obtém a lista completa de visitantes.
+
+As rotas abaixo retornam null caso não haja cadastro com id solicitado.
+- GET ```/livro/:id```: Obtém a lista completa de livros.
+- GET ```/membros/:id```: Obtém a lista completa de membros.
+- GET ```/empréstimos/:id```: Obtém a lista completa de empréstimos.
+- GET ```/bibliotecarios/:id```: Obtém a lista completa de bibliotecários.
+- GET ```/visitantes/:id```: Obtém a lista completa de visitantes.
 
 ### DELETE
 - DELETE ```/livro/{id}```: Deleta um livro.
@@ -103,7 +141,7 @@ Essas queries utilizam JPQL ou Native Queries. <br/>
 ## 📋 Todo List
 - [ ] [Exercício 1 - Entidades do projeto](#-m1s09-ex-1---entidades-do-projeto)
 - [x] [Exercício 2 - MER](#-m1s09-ex-2---mer)
-- [ ] [Exercício 3 - Endpoints CREATE](#-m1s09-ex-3---endpoints-create)
+- [x] [Exercício 3 - Endpoints CREATE](#-m1s09-ex-3---endpoints-create)
 - [ ] [Exercício 4 - Endpoints READ](#-m1s09-ex-4---endpoints-read)
 - [ ] [Exercício 5 - Endpoints DELETE](#-m1s09-ex-5---endpoints-delete)
 - [ ] [Exercício 6 - Queries UPDATE](#-m1s09-ex-6---queries-update)
