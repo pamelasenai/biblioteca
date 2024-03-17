@@ -15,7 +15,7 @@ public class MembroController {
     private final MembroService membroService;
 
     @PostMapping
-    private MembroEntity criarMembro(@RequestBody MembroEntity membro){
+    private MembroEntity criarMembro(@RequestBody MembroEntity membro) throws Exception {
         return membroService.salvarMembro(membro);
     }
 }

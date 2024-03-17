@@ -15,7 +15,7 @@ public class VisitanteController {
     private final VisitanteService visitanteService;
 
     @PostMapping
-    private VisitanteEntity criarVisitante(@RequestBody VisitanteEntity visitante){
+    private VisitanteEntity criarVisitante(@RequestBody VisitanteEntity visitante) throws Exception {
         return visitanteService.salvarVisitante((visitante));
     }
 }

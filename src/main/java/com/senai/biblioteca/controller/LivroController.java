@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/livro")
+@RequestMapping("/livros")
 @RequiredArgsConstructor
 public class LivroController {
     private final LivroService livroService;
 
     @PostMapping
-    private LivroEntity criarLivro(@RequestBody LivroEntity livro){
+    private LivroEntity criarLivro(@RequestBody LivroEntity livro) throws Exception {
         return livroService.salvarLivro(livro);
     }
 }
