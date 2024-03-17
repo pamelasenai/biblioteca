@@ -133,6 +133,7 @@ Exemplo de caminho das entidades:
 - /membros
 - /bibliotecarios
 - /vistantes
+- /emprestimos
 
 ### 📖 [M1S09] Ex 4 - Endpoints READ
 Cria os endpoints GET para cada uma das entidades. <br/>
