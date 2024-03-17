@@ -14,9 +14,9 @@ public class EmprestimoEntity {
     private Long id;
 
     @Column(name = "data_emprestimo")
-    private LocalDate dataEmprestimo;
+    private String dataEmprestimo;
     @Column(name = "data_devolucao")
-    private LocalDate dataDevolucao;
+    private String dataDevolucao;
 
     @ManyToOne
     @JoinColumn(name = "id_livro", referencedColumnName = "id")
@@ -25,4 +25,8 @@ public class EmprestimoEntity {
     @ManyToOne
     @JoinColumn(name = "id_membro", referencedColumnName = "id")
     private MembroEntity idMembro;
+
+    @ManyToOne
+    @JoinColumn(name = "id_bibliotecario", referencedColumnName = "id")
+    private BibliotecarioEntity idBibliotecario;
 }
