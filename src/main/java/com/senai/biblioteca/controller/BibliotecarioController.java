@@ -28,4 +28,9 @@ public class BibliotecarioController {
     public Optional<BibliotecarioEntity> buscarPorId(@PathVariable Long id) {
         return bibliotecarioService.buscarPorId(id);
     }
+
+    @DeleteMapping("{id}")
+    public boolean deletarBibliotecario(@PathVariable Long id) {
+        return bibliotecarioService.deletarBibliotecario(id);
+    }
 }
