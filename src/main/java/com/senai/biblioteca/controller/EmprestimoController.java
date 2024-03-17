@@ -19,17 +19,17 @@ public class EmprestimoController {
         return emprestimoService.salvarEmprestimo(emprestimo);
     }
 
-    @GetMapping
+    @GetMapping("/buscar-todos")
     public List<EmprestimoEntity> buscarTodosEmprestimos() {
         return emprestimoService.buscarTodosEmprestimos();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/id/{id}")
     public Optional<EmprestimoEntity> buscarPorId(@PathVariable Long id) {
         return emprestimoService.buscarPorId(id);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/deletar/{id}")
     public boolean deletarEmprestimo(@PathVariable Long id) {
         return emprestimoService.deletarEmprestimo(id);
     }

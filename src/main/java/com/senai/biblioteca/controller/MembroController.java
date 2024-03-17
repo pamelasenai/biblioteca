@@ -19,17 +19,17 @@ public class MembroController {
         return membroService.salvarMembro(membro);
     }
 
-    @GetMapping
+    @GetMapping("/buscar-todos")
     public List<MembroEntity> buscarTodosMembros() {
         return membroService.buscarTodosMembros();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/id/{id}")
     public Optional<MembroEntity> buscarPorId(@PathVariable Long id) {
         return membroService.buscarPorId(id);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/deletar/{id}")
     public boolean deletarMembro(@PathVariable Long id) {
         return membroService.deletarMembro(id);
     }
