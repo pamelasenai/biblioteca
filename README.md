@@ -180,20 +180,19 @@ Foram criadas queries SQL usando a anotação @Query para atualizar as informaç
 Essas queries utilizam JPQL ou Native Queries. <br/>
 
 ## 🚀 Scripts de Criação de Tabelas
-- No arquivo 'schema.sql' estão os scripts para criar o banco de dados 'biblioteca' e as tabelas necessárias.
-- No arquivo 'data.sql' estão os scripts para inserir pelo menos uma linha de dados para cada tabela.
-<!-- TODO: Adicionar link para schema.sql e data.sql -->
+- No arquivo [schema.sql](src/main/resources/schema.sql) estão os scripts para criar o banco de dados 'biblioteca' e as tabelas necessárias.
+- No arquivo [data.sql](src/main/resources/data.sql) estão os scripts para inserir pelo menos uma linha de dados para cada tabela.
 
 --- 
 ## 📋 Todo List
-- [ ] [Exercício 1 - Entidades do projeto](#-m1s09-ex-1---entidades-do-projeto)
+- [x] [Exercício 1 - Entidades do projeto](#-m1s09-ex-1---entidades-do-projeto)
 - [x] [Exercício 2 - MER](#-m1s09-ex-2---mer)
 - [x] [Exercício 3 - Endpoints CREATE](#-m1s09-ex-3---endpoints-create)
 - [x] [Exercício 4 - Endpoints READ](#-m1s09-ex-4---endpoints-read)
 - [x] [Exercício 5 - Endpoints DELETE](#-m1s09-ex-5---endpoints-delete)
 - [x] [Exercício 6 - Queries UPDATE](#-m1s09-ex-6---queries-update)
 - [x] [Exercício 7 - Endpoints UPDATE](#-m1s09-ex-7---endpoints-update)
-- [ ] [Exercício 8 - Scripts de criação de tabelas](#-m1s09-ex-8---scripts-de-criação-de-tabelas)
+- [x] [Exercício 8 - Scripts de criação de tabelas](#-m1s09-ex-8---scripts-de-criação-de-tabelas)
 
 ## 📂 Descrição dos exercícios
 ### 📖 [M1S09] Ex 1 - Entidades do Projeto
