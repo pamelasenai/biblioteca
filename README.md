@@ -39,76 +39,160 @@ O [diagrama de entidade-relacionamento](images/diagrama-mer.png) pode ser encont
 - POST ```/livro```: Cria um novo livro.
   * RequestBody: 
     ```json
-      {
-        "titulo" : "Harry Potter e a pedra filosofal",
-        "autor" : "J. K. Rowling",
-        "anoPublicacao": 2017
-      }
+        {
+        	"titulo": "titulo",
+        	"autor": "autor",
+        	"anoPublicacao": 2025
+        }
     ```
 - POST ```/membros```: Cria um novo membro.
-   * RequestBody:
-  <!-- TODO: Adicionar JSON -->
+  * RequestBody:
+     ```json
+        {
+            "nome": "nome",
+	        "endereco": "endereco, número - bairro, cidade / UF",
+	        "telefone": "(4) 99999-99999"
+        }
+     ```
 - POST ```/empréstimos```: Registra um novo empréstimo.
-    * RequestBody:
-  <!-- TODO: Adicionar JSON -->
+  * RequestBody:
+    ```json
+       {
+           "dataEmprestimo": "17/03/2024",
+           "dataDevolucao": "17/03/2024",
+           "livro": {
+               "id": 1
+           },
+           "membro": {
+              "id": 1
+           },
+           "bibliotecario": {
+              "id": 1
+           }
+       }
+    ```
 - POST ```/bibliotecarios```: Cria um novo bibliotecário.
     * RequestBody:
-  <!-- TODO: Adicionar JSON -->
+      ```json
+         {
+           "nome": "nome",
+           "email": "email@email.com.br",
+           "senha": "senha123"
+         }
+      ```
 - POST ```/visitantes```: Cria um novo visitante.
-    * RequestBody:
-  <!-- TODO: Adicionar JSON -->
+  * RequestBody:
+    ```json
+       {
+         "nome": "nome",
+         "telefone": "(048) 99999-9999"
+       }
+    ```
 
 ### READ
 As rotas abaixo retornam um array vazio caso não haja cadastrados.
-- GET ```/livro```: Obtém a lista completa de livros.
-- GET ```/membros```: Obtém a lista completa de membros.
-- GET ```/empréstimos```: Obtém a lista completa de empréstimos.
-- GET ```/bibliotecarios```: Obtém a lista completa de bibliotecários.
-- GET ```/visitantes```: Obtém a lista completa de visitantes.
+- GET ```/livro/buscar-todos```: Obtém a lista completa de livros.
+- GET ```/membros/buscar-todos```: Obtém a lista completa de membros.
+- GET ```/empréstimos/buscar-todos```: Obtém a lista completa de empréstimos.
+- GET ```/bibliotecarios/buscar-todos```: Obtém a lista completa de bibliotecários.
+- GET ```/visitantes/buscar-todos```: Obtém a lista completa de visitantes.
+
+As rotas abaixo retornam null caso não haja cadastro com id solicitado.
+- GET ```/livro/id/:id```: Obtém a lista completa de livros.
+- GET ```/membros/id/:id```: Obtém a lista completa de membros.
+- GET ```/empréstimos/id/:id```: Obtém a lista completa de empréstimos.
+- GET ```/bibliotecarios/id/:id```: Obtém a lista completa de bibliotecários.
+- GET ```/visitantes/id/:id```: Obtém a lista completa de visitantes.
 
 ### DELETE
-- DELETE ```/livro/{id}```: Deleta um livro.
-- DELETE ```/membros/{id}```: Deleta um membro.
-- DELETE ```/empréstimos/{id}```: Deleta um empréstimo.
-- DELETE ```/bibliotecarios/{id}```: Deleta um bibliotecário.
-- DELETE ```/visitantes/{id}```: Deleta um visitante.
+Todas as rotas retornam true quando a deleção é concluída com sucesso, 
+caso não exista o registro com o id informado retornará um erro.
+- DELETE ```/empréstimos/deletar/:id```: Deleta um empréstimo.
+- DELETE ```/visitantes/deletar/:id```: Deleta um visitante.
+
+As rotas abaixo só permitem a deleção caso não haja vinculo com a tabela empréstimo
+- DELETE ```/livro/deletar/:id```: Deleta um livro.
+- DELETE ```/membros/deletar/:id```: Deleta um membro.
+- DELETE ```/bibliotecarios/deletar/:id```: Deleta um bibliotecário.
 
 ### UPDATE
-- PUT ```/livro/{id}```: Atualiza as informações de um livro.
+As rotas abaixo retornam null caso o id informado não tenha um item cadastrado.
+- PUT ```/livro/atualizar```: Atualiza as informações de um livro.
     * RequestBody:
-  <!-- TODO: Adicionar JSON -->
-- PUT ```/membros/{id}```: Atualiza as informações de um membro.
+      ```json
+         {
+             "id": 1,
+             "titulo": "titulo novo",
+             "autor": "autor",
+             "anoPublicacao": 2024
+         }
+      ```
+- PUT ```/membros/atualizar```: Atualiza as informações de um membro.
     * RequestBody:
-  <!-- TODO: Adicionar JSON -->
-- PUT ```/empréstimos/{id}```: Atualiza as informações de um empréstimo.
+      ```json
+         {
+             "id": 1,
+             "nome": "nome novo",
+             "endereco": "endereco, número - bairro, cidade / UF",
+             "telefone": "(4) 99999-99999"
+         }
+      ```
+- PUT ```/empréstimos/atualizar```: Atualiza as informações de um empréstimo.
     * RequestBody:
-  <!-- TODO: Adicionar JSON -->
-- PUT ```/bibliotecarios/{id}```: Atualiza as informações de um bibliotecário.
+      ```json
+         {
+             "id": 1,
+             "dataEmprestimo": "17/03/2024",
+             "dataDevolucao": "17/03/2024",
+             "livro": {
+                 "id": 1
+             },
+             "membro": {
+                 "id": 1
+             },
+             "bibliotecario": {
+                 "id": 1
+             }
+         }
+      ```
+- PUT ```/bibliotecarios/atualizar```: Atualiza as informações de um bibliotecário.
     * RequestBody:
-  <!-- TODO: Adicionar JSON -->
-- PUT ```/visitantes/{id}```: Atualiza as informações de um visitante.
+      ```json
+         {
+             "id": 1,
+             "nome": "nome novo",
+             "email": "email@email.com.br",
+             "senha": "senha123"
+         }
+      ```
+- PUT ```/visitantes/atualizar```: Atualiza as informações de um visitante.
     * RequestBody:
-  <!-- TODO: Adicionar JSON -->
+      ```json
+         {
+             "id": 1,
+             "nome": "nome novo",
+             "telefone": "(4) 99999-99999"
+         }
+      ```
 
 ## ✨ Queries de Atualização
 Foram criadas queries SQL usando a anotação @Query para atualizar as informações de cada entidade. <br/>
 Essas queries utilizam JPQL ou Native Queries. <br/>
 
 ## 🚀 Scripts de Criação de Tabelas
-- No arquivo 'schema.sql' estão os scripts para criar o banco de dados 'biblioteca' e as tabelas necessárias.
-- No arquivo 'data.sql' estão os scripts para inserir pelo menos uma linha de dados para cada tabela.
-<!-- TODO: Adicionar link para schema.sql e data.sql -->
+- No arquivo [schema.sql](src/main/resources/schema.sql) estão os scripts para criar o banco de dados 'biblioteca' e as tabelas necessárias.
+- No arquivo [data.sql](src/main/resources/data.sql) estão os scripts para inserir pelo menos uma linha de dados para cada tabela.
 
 --- 
 ## 📋 Todo List
-- [ ] [Exercício 1 - Entidades do projeto](#-m1s09-ex-1---entidades-do-projeto)
+- [x] [Exercício 1 - Entidades do projeto](#-m1s09-ex-1---entidades-do-projeto)
 - [x] [Exercício 2 - MER](#-m1s09-ex-2---mer)
-- [ ] [Exercício 3 - Endpoints CREATE](#-m1s09-ex-3---endpoints-create)
-- [ ] [Exercício 4 - Endpoints READ](#-m1s09-ex-4---endpoints-read)
-- [ ] [Exercício 5 - Endpoints DELETE](#-m1s09-ex-5---endpoints-delete)
-- [ ] [Exercício 6 - Queries UPDATE](#-m1s09-ex-6---queries-update)
-- [ ] [Exercício 7 - Endpoints UPDATE](#-m1s09-ex-7---endpoints-update)
-- [ ] [Exercício 8 - Scripts de criação de tabelas](#-m1s09-ex-8---scripts-de-criação-de-tabelas)
+- [x] [Exercício 3 - Endpoints CREATE](#-m1s09-ex-3---endpoints-create)
+- [x] [Exercício 4 - Endpoints READ](#-m1s09-ex-4---endpoints-read)
+- [x] [Exercício 5 - Endpoints DELETE](#-m1s09-ex-5---endpoints-delete)
+- [x] [Exercício 6 - Queries UPDATE](#-m1s09-ex-6---queries-update)
+- [x] [Exercício 7 - Endpoints UPDATE](#-m1s09-ex-7---endpoints-update)
+- [x] [Exercício 8 - Scripts de criação de tabelas](#-m1s09-ex-8---scripts-de-criação-de-tabelas)
 
 ## 📂 Descrição dos exercícios
 ### 📖 [M1S09] Ex 1 - Entidades do Projeto
@@ -133,6 +217,7 @@ Exemplo de caminho das entidades:
 - /membros
 - /bibliotecarios
 - /vistantes
+- /emprestimos
 
 ### 📖 [M1S09] Ex 4 - Endpoints READ
 Cria os endpoints GET para cada uma das entidades. <br/>
