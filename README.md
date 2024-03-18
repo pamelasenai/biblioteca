@@ -116,6 +116,7 @@ As rotas abaixo só permitem a deleção caso não haja vinculo com a tabela emp
 - DELETE ```/bibliotecarios/deletar/:id```: Deleta um bibliotecário.
 
 ### UPDATE
+As rotas abaixo retornam null caso o id informado não tenha um item cadastrado.
 - PUT ```/livro/atualizar```: Atualiza as informações de um livro.
     * RequestBody:
       ```json
