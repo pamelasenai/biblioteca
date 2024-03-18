@@ -30,7 +30,12 @@ public class VisitanteController {
     }
 
     @DeleteMapping("/deletar/{id}")
-    public boolean deletarVisitante(@PathVariable Long id) {
+    public boolean deletarVisitante(@PathVariable Long id) throws Exception {
         return visitanteService.deletarVisitante(id);
+    }
+
+    @PutMapping("/atualizar")
+    public Optional<VisitanteEntity> atualizarVisitante(@RequestBody VisitanteEntity visitante) throws Exception {
+        return visitanteService.atualizarVisitante(visitante);
     }
 }

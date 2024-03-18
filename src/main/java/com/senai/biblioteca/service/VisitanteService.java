@@ -28,12 +28,30 @@ public class VisitanteService {
         return visitanteRepository.findById(id);
     }
 
-    public boolean deletarVisitante(Long id) {
+    public boolean deletarVisitante(Long id) throws Exception {
+        verificarCadastro(id);
+        visitanteRepository.deleteById(id);
+        return true;
+    }
+
+    public Optional<VisitanteEntity> atualizarVisitante(VisitanteEntity visitante) throws Exception {
+        try {
+            visitanteRepository.update(
+                    visitante.getId(),
+                    visitante.getNome(),
+                    visitante.getTelefone()
+            );
+            return buscarPorId(visitante.getId());
+        } catch (Exception e) {
+            verificarCadastro(visitante.getId());
+            throw new Exception("Não foi possível atualizar o visitante.");
+        }
+    }
+
+    private void verificarCadastro(Long id) throws Exception {
         if (buscarPorId(id).isEmpty()) {
             throw new IllegalArgumentException("Visitante com o ID " + id + " não encontrado.");
         }
-        visitanteRepository.deleteById(id);
-        return true;
     }
 
     private boolean validar(VisitanteEntity visitante) throws Exception {
