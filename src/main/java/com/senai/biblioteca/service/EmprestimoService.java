@@ -30,12 +30,33 @@ public class EmprestimoService {
         return emprestimoRepository.findById(id);
     }
 
-    public boolean deletarEmprestimo(Long id) {
-        if (buscarPorId(id).isEmpty()) {
-            throw new IllegalArgumentException("Empréstimo com o ID " + id + " não encontrado.");
-        }
+    public boolean deletarEmprestimo(Long id) throws Exception {
+        verificarCadastro(id);
         emprestimoRepository.deleteById(id);
         return true;
+    }
+
+    public Optional<EmprestimoEntity> atualizarEmprestimo(EmprestimoEntity emprestimo) throws Exception {
+        try {
+            emprestimoRepository.update(
+                    emprestimo.getId(),
+                    emprestimo.getDataEmprestimo(),
+                    emprestimo.getDataDevolucao(),
+                    emprestimo.getLivro(),
+                    emprestimo.getMembro(),
+                    emprestimo.getBibliotecario()
+            );
+            return buscarPorId(emprestimo.getId());
+        } catch (Exception e){
+            verificarCadastro(emprestimo.getId());
+            throw new Exception("Não foi possível atualizar empréstimo.");
+        }
+    }
+
+    private void verificarCadastro(Long id) {
+        if (buscarPorId(id).isEmpty()) {
+            throw new IllegalArgumentException("Empréstimo com o ID informado não encontrado.");
+        }
     }
 
     private boolean validar(EmprestimoEntity emprestimo) throws Exception {

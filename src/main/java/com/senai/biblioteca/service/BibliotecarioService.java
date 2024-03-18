@@ -2,12 +2,9 @@ package com.senai.biblioteca.service;
 
 import com.senai.biblioteca.entities.BibliotecarioEntity;
 import com.senai.biblioteca.repository.BibliotecarioRepository;
-import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.management.Query;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,15 +24,17 @@ public class BibliotecarioService {
         return bibliotecarioRepository.findAll();
     }
 
-    public Optional<BibliotecarioEntity> buscarPorId(Long id) {
-        return bibliotecarioRepository.findById(id);
+    public Optional<BibliotecarioEntity> buscarPorId(Long id) throws Exception {
+        try {
+            return bibliotecarioRepository.findById(id);
+        } catch (Exception e) {
+            throw new Exception("Bibliotecário com o ID informado não encontrado.");
+        }
     }
 
-    public boolean deletarBibliotecario(Long id) {
+    public boolean deletarBibliotecario(Long id) throws Exception {
+        verificarCadastro(id);
         boolean ahVinculos = bibliotecarioRepository.countVinculos(id) > 0;
-        if (buscarPorId(id).isEmpty()) {
-            throw new IllegalArgumentException("Bibliotecário com o ID " + id + " não encontrado.");
-        }
         if (ahVinculos){
             throw new IllegalStateException(
                     "O bibliotecário está vinculado a um empréstimo e não pode ser excluído." +
@@ -44,6 +43,27 @@ public class BibliotecarioService {
         }
         bibliotecarioRepository.deleteById(id);
         return true;
+    }
+
+    public Optional<BibliotecarioEntity> atualizarBibliotecario(BibliotecarioEntity bibliotecario) throws Exception {
+        try {
+            bibliotecarioRepository.update(
+                    bibliotecario.getId(),
+                    bibliotecario.getNome(),
+                    bibliotecario.getEmail(),
+                    bibliotecario.getSenha()
+            );
+            return buscarPorId(bibliotecario.getId());
+        } catch (Exception e) {
+            verificarCadastro(bibliotecario.getId());
+            throw new Exception("Não foi possível atualizar bibliotecário.");
+        }
+    }
+
+    private void verificarCadastro(Long id) throws Exception {
+        if (buscarPorId(id).isEmpty()) {
+            throw new IllegalArgumentException("Bibliotecário com o ID informado não encontrado.");
+        }
     }
 
     private boolean validar(BibliotecarioEntity bibliotecario) throws Exception {

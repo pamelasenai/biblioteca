@@ -25,12 +25,17 @@ public class BibliotecarioController {
     }
 
     @GetMapping("/id/{id}")
-    public Optional<BibliotecarioEntity> buscarPorId(@PathVariable Long id) {
+    public Optional<BibliotecarioEntity> buscarPorId(@PathVariable Long id) throws Exception {
         return bibliotecarioService.buscarPorId(id);
     }
 
     @DeleteMapping("/deletar/{id}")
-    public boolean deletarBibliotecario(@PathVariable Long id) {
+    public boolean deletarBibliotecario(@PathVariable Long id) throws Exception {
         return bibliotecarioService.deletarBibliotecario(id);
+    }
+
+    @PutMapping("/atualizar")
+    public Optional<BibliotecarioEntity> atualizarBibliotecario(@RequestBody BibliotecarioEntity bibliotecario) throws Exception {
+        return bibliotecarioService.atualizarBibliotecario(bibliotecario);
     }
 }

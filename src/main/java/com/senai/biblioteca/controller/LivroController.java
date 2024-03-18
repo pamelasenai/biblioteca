@@ -30,7 +30,12 @@ public class LivroController {
     }
 
     @DeleteMapping("/deletar/{id}")
-    public boolean deletarLivro(@PathVariable Long id) {
+    public boolean deletarLivro(@PathVariable Long id) throws Exception {
         return livroService.deletarLivro(id);
+    }
+
+    @PutMapping("/atualizar")
+    public Optional<LivroEntity> atualizarLivro(@RequestBody LivroEntity livro) throws Exception {
+        return livroService.atualizarLivro(livro);
     }
 }

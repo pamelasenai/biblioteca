@@ -29,11 +29,9 @@ public class LivroService {
         return livroRepository.findById(id);
     }
 
-    public boolean deletarLivro(Long id) {
+    public boolean deletarLivro(Long id) throws Exception {
         boolean ahVinculos = livroRepository.countVinculos(id) > 0;
-        if (buscarPorId(id).isEmpty()) {
-            throw new IllegalArgumentException("Livro com o ID " + id + " não encontrado.");
-        }
+        verificarCadastro(id);
         if (ahVinculos){
             throw new IllegalStateException(
                     "O Livro está vinculado a um empréstimo e não pode ser excluído." +
@@ -42,6 +40,27 @@ public class LivroService {
         }
         livroRepository.deleteById(id);
         return true;
+    }
+
+    public Optional<LivroEntity> atualizarLivro(LivroEntity livro) throws Exception {
+        try {
+            livroRepository.update(
+                    livro.getId(),
+                    livro.getTitulo(),
+                    livro.getAutor(),
+                    livro.getAnoPublicacao()
+            );
+            return buscarPorId(livro.getId());
+        } catch (Exception e) {
+            verificarCadastro(livro.getId());
+            throw new Exception("Não foi possível atualizar o livro.");
+        }
+    }
+
+    private void verificarCadastro(Long id) throws Exception {
+        if (buscarPorId(id).isEmpty()) {
+            throw new IllegalArgumentException("Livro com o ID informado não encontrado.");
+        }
     }
 
     private boolean validar(LivroEntity livro) throws Exception {
