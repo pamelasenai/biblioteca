@@ -30,7 +30,12 @@ public class EmprestimoController {
     }
 
     @DeleteMapping("/deletar/{id}")
-    public boolean deletarEmprestimo(@PathVariable Long id) {
+    public boolean deletarEmprestimo(@PathVariable Long id) throws Exception {
         return emprestimoService.deletarEmprestimo(id);
+    }
+
+    @PutMapping("/atualizar")
+    public Optional<EmprestimoEntity> atualizarEmprestimo(@RequestBody EmprestimoEntity emprestimo) throws Exception {
+        return emprestimoService.atualizarEmprestimo(emprestimo);
     }
 }
