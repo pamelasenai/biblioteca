@@ -116,21 +116,63 @@ As rotas abaixo só permitem a deleção caso não haja vinculo com a tabela emp
 - DELETE ```/bibliotecarios/deletar/:id```: Deleta um bibliotecário.
 
 ### UPDATE
-- PUT ```/livro/{id}```: Atualiza as informações de um livro.
+- PUT ```/livro/atualizar```: Atualiza as informações de um livro.
     * RequestBody:
-  <!-- TODO: Adicionar JSON -->
-- PUT ```/membros/{id}```: Atualiza as informações de um membro.
+      ```json
+         {
+             "id": 1,
+             "titulo": "titulo novo",
+             "autor": "autor",
+             "anoPublicacao": 2024
+         }
+      ```
+- PUT ```/membros/atualizar```: Atualiza as informações de um membro.
     * RequestBody:
-  <!-- TODO: Adicionar JSON -->
-- PUT ```/empréstimos/{id}```: Atualiza as informações de um empréstimo.
+      ```json
+         {
+             "id": 1,
+             "nome": "nome novo",
+             "endereco": "endereco, número - bairro, cidade / UF",
+             "telefone": "(4) 99999-99999"
+         }
+      ```
+- PUT ```/empréstimos/atualizar```: Atualiza as informações de um empréstimo.
     * RequestBody:
-  <!-- TODO: Adicionar JSON -->
-- PUT ```/bibliotecarios/{id}```: Atualiza as informações de um bibliotecário.
+      ```json
+         {
+             "id": 1,
+             "dataEmprestimo": "17/03/2024",
+             "dataDevolucao": "17/03/2024",
+             "livro": {
+                 "id": 1
+             },
+             "membro": {
+                 "id": 1
+             },
+             "bibliotecario": {
+                 "id": 1
+             }
+         }
+      ```
+- PUT ```/bibliotecarios/atualizar```: Atualiza as informações de um bibliotecário.
     * RequestBody:
-  <!-- TODO: Adicionar JSON -->
-- PUT ```/visitantes/{id}```: Atualiza as informações de um visitante.
+      ```json
+         {
+             "id": 1,
+             "nome": "nome novo",
+             "email": "email@email.com.br",
+             "senha": "senha123"
+         }
+      ```
+- PUT ```/visitantes/atualizar```: Atualiza as informações de um visitante.
     * RequestBody:
-  <!-- TODO: Adicionar JSON -->
+      ```json
+         {
+             "id": 1,
+             "nome": "nome novo",
+             "telefone": "(4) 99999-99999"
+         }
+      ```
 
 ## ✨ Queries de Atualização
 Foram criadas queries SQL usando a anotação @Query para atualizar as informações de cada entidade. <br/>
