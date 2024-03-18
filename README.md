@@ -190,8 +190,8 @@ Essas queries utilizam JPQL ou Native Queries. <br/>
 - [x] [Exercício 3 - Endpoints CREATE](#-m1s09-ex-3---endpoints-create)
 - [x] [Exercício 4 - Endpoints READ](#-m1s09-ex-4---endpoints-read)
 - [x] [Exercício 5 - Endpoints DELETE](#-m1s09-ex-5---endpoints-delete)
-- [ ] [Exercício 6 - Queries UPDATE](#-m1s09-ex-6---queries-update)
-- [ ] [Exercício 7 - Endpoints UPDATE](#-m1s09-ex-7---endpoints-update)
+- [x] [Exercício 6 - Queries UPDATE](#-m1s09-ex-6---queries-update)
+- [x] [Exercício 7 - Endpoints UPDATE](#-m1s09-ex-7---endpoints-update)
 - [ ] [Exercício 8 - Scripts de criação de tabelas](#-m1s09-ex-8---scripts-de-criação-de-tabelas)
 
 ## 📂 Descrição dos exercícios
