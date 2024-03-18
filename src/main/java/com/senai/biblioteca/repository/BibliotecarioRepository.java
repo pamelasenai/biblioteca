@@ -15,7 +15,7 @@ public interface BibliotecarioRepository extends JpaRepository<BibliotecarioEnti
 
     @Modifying
     @Transactional
-    @Query("update BibliotecarioEntity b SET b.nome = :nome, b.email = :email, b.senha = :senha where b.id = :id")
+    @Query("UPDATE BibliotecarioEntity b SET b.nome = :nome, b.email = :email, b.senha = :senha WHERE b.id = :id")
     void update(
             @Param("id") Long id,
             @Param("nome") String nome,
