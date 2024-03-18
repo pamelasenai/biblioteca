@@ -30,7 +30,12 @@ public class MembroController {
     }
 
     @DeleteMapping("/deletar/{id}")
-    public boolean deletarMembro(@PathVariable Long id) {
+    public boolean deletarMembro(@PathVariable Long id) throws Exception {
         return membroService.deletarMembro(id);
+    }
+
+    @PutMapping("/atualizar")
+    public Optional<MembroEntity> atualizarMembro(@RequestBody MembroEntity membro) throws  Exception {
+        return membroService.atualizarMembro(membro);
     }
 }

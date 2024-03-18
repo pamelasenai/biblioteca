@@ -28,11 +28,9 @@ public class MembroService {
         return membroRepository.findById(id);
     }
 
-    public boolean deletarMembro(Long id) {
+    public boolean deletarMembro(Long id) throws Exception {
         boolean ahVinculos = membroRepository.countVinculos(id) > 0;
-        if (buscarPorId(id).isEmpty()) {
-            throw new IllegalArgumentException("Membro com o ID " + id + " não encontrado.");
-        }
+        verificarCadastro(id);
         if (ahVinculos){
             throw new IllegalStateException(
                     "O membro está vinculado a um empréstimo e não pode ser excluído." +
@@ -41,6 +39,27 @@ public class MembroService {
         }
         membroRepository.deleteById(id);
         return true;
+    }
+
+    public Optional<MembroEntity> atualizarMembro(MembroEntity membro) throws Exception {
+        try {
+            membroRepository.update(
+                    membro.getId(),
+                    membro.getNome(),
+                    membro.getEndereco(),
+                    membro.getTelefone()
+            );
+            return buscarPorId(membro.getId());
+        } catch (Exception e) {
+            verificarCadastro(membro.getId());
+            throw new Exception("Não foi possível atualizar o membro.");
+        }
+    }
+
+    private void verificarCadastro(Long id) throws Exception {
+        if (buscarPorId(id).isEmpty()) {
+            throw new IllegalArgumentException("Membro com o ID " + id + " não encontrado.");
+        }
     }
 
     private boolean validar(MembroEntity membro) throws Exception {
